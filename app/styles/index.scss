@@ -1,1 +1,44 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+$font-family: 'Playfair Display', serif;
+$body-bg-color: gray;
+$box-bg-color: lightgrey;
+$box-border-color: rgb(153, 72, 72);
+$alt-bg-color: cyan;
+
+body .container-board {
+  background-color: $body-bg-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  align-items: center;
+  background-color: $box-bg-color;
+  border: 1px solid $box-border-color;
+  color: $box-border-color;
+  display: flex;
+  font-family: $font-family;
+  height: 80px;
+  justify-content: center;
+}
+
+.box:hover {
+  background-color: darkgray;
+}
+
+h1,
+h2 {
+  font-family: $font-family;
+}
+
+.alt-color {
+  background-color: $alt-bg-color;
+}
+
+.box {
+  height: 125px;
+  width: 125px;
+}

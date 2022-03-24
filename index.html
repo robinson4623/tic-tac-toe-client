@@ -1,17 +1,80 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+    <!-- Do not add `script` tags-->
+    <script
+      src="public/vendor.js"
+      type="text/javascript"
+      charset="utf-8"
+      defer
+    ></script>
+    <script
+      src="public/application.js"
+      type="text/javascript"
+      charset="utf-8"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tic-Tac-Toe</h1>
+      <h2>Come get some!</h2>
+
+      <h3>Sign Up</h3>
+      <form id="sign-up-form">
+        <input name="credentials[email]" type="email" placeholder="Email" />
+        <input
+          name="credentials[password]"
+          type="password"
+          placeholder="Enter password"
+        />
+        <input
+          name="credentials[password_confirmation]"
+          type="password"
+          placeholder="Enter password again"
+        />
+        <button type="submit">Sign Up</button>
+        <p id="auth-result">Update this text</p>
+      </form>
+
+      <h3>Sign In</h3>
+      <form id="sign-in-form">
+        <input name="credentials[email]" type="email" placeholder="Email" />
+        <input
+          name="credentials[password]"
+          type="password"
+          placeholder="Enter password"
+        />
+        <button type="submit">Sign In</button>
+      </form>
+
+      <h3>Sign Out</h3>
+      <button id="sign-out-button" type="click">Sign Out</button>
+
+      <div class="container-board">
+        <div class="row">
+          <div class="col-2 box alt-color" button type="button">1</div>
+          <div class="col-2 box alt-color" button type="button">2</div>
+          <div class="col-2 box alt-color" button type="button">3</div>
+        </div>
+        <div class="row">
+          <div class="col-2 box alt-color" button type="button">4</div>
+          <div class="col-2 box alt-color" button type="button">5</div>
+          <div class="col-2 box alt-color" button type="button">6</div>
+        </div>
+        <div class="row">
+          <div class="col-2 box alt-color" button type="button">7</div>
+          <div class="col-2 box alt-color" button type="button">8</div>
+          <div class="col-2 box alt-color" button type="button">9</div>
+        </div>
+      </div>
+      <div>Winner goes here</div>
+    </div>
+  </body>
 </html>
