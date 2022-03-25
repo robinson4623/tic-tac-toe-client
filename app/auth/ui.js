@@ -14,6 +14,8 @@ const onSignUpFailure = function () {
 const onSignInSuccess = function (response) {
   $('#auth-result').html('<p>Signed in and ready</p>');
   $('form').trigger('reset');
+  $('.container-board .box').css('display', 'flex');
+
   store.user = response.user;
 };
 
@@ -29,17 +31,6 @@ const onSignOutFailure = function () {
   $('#auth-result').html('<p>Error signing out</p>');
 };
 
-const onGetGamesSuccess = function (response) {
-  $('#auth-result').html('<p>It did work</p>');
-  console.log(response);
-  //$('form').trigger('reset');
-  store.user = response.user;
-};
-
-const onGetGamesFailure = function () {
-  $('#auth-result').html('<p>not working for some reason</p>');
-};
-
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -47,6 +38,4 @@ module.exports = {
   onSignInFailure,
   onSignOutSuccess,
   onSignOutFailure,
-  onGetGamesSuccess,
-  onGetGamesFailure,
 };
