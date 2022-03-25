@@ -20,6 +20,7 @@
       charset="utf-8"
       defer
     ></script>
+    <script src="app/script.js" type="text/javascript"></script>
   </head>
   <body>
     <div class="container">
@@ -59,22 +60,23 @@
 
       <div class="container-board">
         <div class="row">
-          <div class="col-2 box alt-color" button type="button">1</div>
-          <div class="col-2 box alt-color" button type="button">2</div>
-          <div class="col-2 box alt-color" button type="button">3</div>
+          <div class="col-2 box alt-color" id="sq0" data-index="12">a</div>
+          <div class="col-2 box alt-color" id="sq1" data-index="1">1</div>
+          <div class="col-2 box alt-color" id="sq2" data-index="2">2</div>
         </div>
         <div class="row">
-          <div class="col-2 box alt-color" button type="button">4</div>
-          <div class="col-2 box alt-color" button type="button">5</div>
-          <div class="col-2 box alt-color" button type="button">6</div>
+          <div class="col-2 box alt-color" id="sq3" data-index="3">3</div>
+          <div class="col-2 box alt-color" id="sq4" data-index="4">4</div>
+          <div class="col-2 box alt-color" id="sq5" data-index="5">5</div>
         </div>
         <div class="row">
-          <div class="col-2 box alt-color" button type="button">7</div>
-          <div class="col-2 box alt-color" button type="button">8</div>
-          <div class="col-2 box alt-color" button type="button">9</div>
+          <div class="col-2 box alt-color" id="sq6" data-index="6">6</div>
+          <div class="col-2 box alt-color" id="sq7" data-index="7">7</div>
+          <div class="col-2 box alt-color" id="sq8" data-index="8">8</div>
         </div>
       </div>
       <div>Winner goes here</div>
+      <button id="get-games">Text here</button>
     </div>
   </body>
 </html>
