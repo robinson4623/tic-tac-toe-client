@@ -20,12 +20,6 @@ const assignValue = function () {
   const square = $(this).data();
   let indexValue = square.index;
   return indexValue;
-  //boxes.push(indexValue);
-  //console.log(indexValue);
-
-  // if (!square[indexValue]) {
-  //   square[indexValue] = currentPlayer;
-  // }
 };
 
 const boxIndex = Array.from($('.box'));
