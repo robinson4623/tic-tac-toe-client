@@ -16,7 +16,7 @@ const onGetGames = function () {
 const onShowGames = event => {
   event.preventDefault();
   const form = event.target;
-  const data = getFormFields(form);
+  const data = getFormFields();
   console.log(data);
 
   gamesApi
@@ -26,8 +26,11 @@ const onShowGames = event => {
 };
 
 const onNewGames = function (event) {
+  //event.preventDefault();
   console.log('Making New Game');
 
+  //const box = event.target;
+  //console.log(box);
   gamesApi
     .newGames()
     .then(response => gamesUi.onNewGamesSuccess(response))

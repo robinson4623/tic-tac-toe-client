@@ -34,8 +34,22 @@ const newGames = function () {
   });
 };
 
+const updateGame = function (updateData) {
+  return $.ajax({
+    method: 'PATCH',
+    url:
+      'https://tic-tac-toe-api-development.herokuapp.com/games/' +
+      store.game._id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token,
+    },
+    data: updateData,
+  });
+};
+
 module.exports = {
   getGames,
   newGames,
   showGames,
+  updateGame,
 };
