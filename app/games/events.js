@@ -9,9 +9,9 @@ const app = require('../app.js');
 const player1 = 'X';
 const player2 = 'O';
 const player1Image = '../../images/XBugs.png';
-const player2Image = 'https://i.imgur.com/PIrG7Oh.png';
+const player2Image = '../../images/OBugs.png';
 
-const playerWinImage = 'https://i.imgur.com/4rhFHxx.png';
+const playerWinImage = '../../images/YouWinBugNoBackground.png';
 let currentGameArray = ['', '', '', '', '', '', '', ''];
 
 const board = currentGameArray;
@@ -122,18 +122,17 @@ const onNewGames = event => {
     .then(response => gamesUi.onNewGamesSuccess(response))
     .catch(() => gamesUi.onNewGamesFailure());
 };
-
+// function to update box and player image
 const onUpdateGames = event => {
   let boxClicked = $(event.target).data('index');
-
-  if (boxClicked === undefined) {
+  if (winStatus === true) {
+    $('#error-status').html(
+      '<p>Winner has already been determined.  Click NEW GAME to start a new game.</p>'
+    );
+  } else if (boxClicked === undefined) {
     boxClicked = $(event.target.parentElement).data('index');
-  }
-  console.log(event);
-  console.log('box', boxClicked);
-  store.boxClicked = boxClicked;
-  //console.log('storedgame', store, boxClicked);
-  if (
+    store.boxClicked = boxClicked;
+  } else if (
     store.game.cells[boxClicked]?.includes('X') ||
     store.game.cells[boxClicked]?.includes('O')
   ) {
@@ -164,21 +163,8 @@ const onUpdateGames = event => {
 
       .catch(() => gamesUi.onNewGamesFailure());
 
-    // gamesApi
-    //   .updateGame(updateBoard)
-
-    //   .then(response => gamesUi.onUpdateGamesSuccess(response))
-    //   //.then(store.)
-    //   .catch(() => gamesUi.onNewGamesFailure());
-    // console.log(store.game);
-    //checkWinStatus();
-    //$(event.target).html(store.currentPlayer);
-
-    //console.log(store.currentPlayer);
-
     togglePlayer();
     togglePlayerImage();
-    //console.log(store.game);
   }
 };
 
