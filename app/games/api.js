@@ -27,7 +27,7 @@ const config = require('../config.js');
 const newGames = function () {
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + '/games/',
     headers: {
       Authorization: 'Bearer ' + store.user.token,
     },
@@ -38,7 +38,7 @@ const newGames = function () {
 const updateGame = function (updateData) {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/games' + store.game._id,
+    url: config.apiUrl + '/games/' + store.game._id,
     headers: {
       Authorization: 'Bearer ' + store.user.token,
     },

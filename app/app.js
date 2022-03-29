@@ -20,9 +20,12 @@ const gamesUi = require('./games/ui.js');
 
 // const newGameStart = function () {
 //   $('.container-board .box').css('display', 'flex');
-// };
+// };$(document).ready(function() {             $('#loginModal').modal('show');
 
 $(() => {
+  $('#exampleModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus');
+  });
   $('#sign-up-form').on('submit', authEvents.onSignUp);
   $('#sign-in-form').on('submit', authEvents.onSignIn);
   $('#sign-out-button').on('click', authEvents.onSignOut);
@@ -55,7 +58,7 @@ $(() => {
   $('#get-games').on('click', gamesEvents.onGetGames);
   $('#show-game').on('click', gamesEvents.onShowGames);
   $('#new-game').on('click', function () {
-    console.log('new game clicked');
+    // console.log('new game clicked');
     gamesEvents.onNewGames();
     $('.container-board .box').css('display', 'flex');
   });

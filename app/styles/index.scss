@@ -1,11 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Mulish:wght@300&family=Shalimar&display=swap');
 
-$font-family: 'Playfair Display', serif;
-$body-bg-color: gray;
-$box-bg-color: lightgrey;
+$font-family: 'Mountains of Christmas', cursive;
+$body-bg-color: rgb(187, 228, 130);
+$box-bg-color: white;
 $box-border-color: rgb(153, 72, 72);
-$alt-bg-color: cyan;
 
 body .container-board {
   background-color: $body-bg-color;
@@ -14,7 +14,12 @@ body .container-board {
   align-items: center;
 }
 header {
+  display: flex;
   align-items: center;
+}
+
+.container {
+  background-color: powderblue;
 }
 
 .box {
@@ -29,15 +34,12 @@ header {
 }
 
 .box:hover {
-  background-color: rgb(109, 109, 184);
+  background-color: rgb(21, 116, 180);
 }
 
-h2 {
+h2,
+h3 {
   font-family: $font-family;
-}
-
-.alt-color {
-  background-color: $alt-bg-color;
 }
 
 .box {
