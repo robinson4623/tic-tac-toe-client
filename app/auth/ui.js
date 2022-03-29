@@ -14,9 +14,7 @@ const onSignUpFailure = function () {
 const onSignInSuccess = function (response) {
   $('#auth-result').html('<p>Signed in and ready</p>');
   $('form').trigger('reset');
-  $('.container-board .box').css('display', 'flex');
   $('#new-game').css('display', 'flex');
-
   store.user = response.user;
 };
 

@@ -1,27 +1,32 @@
 ('use strict');
 
 const store = require('../store.js');
+const app = require('../app.js');
 
-const onGetGamesSuccess = function (response) {
-  $('#auth-result').html('<p>It did work</p>');
-  console.log(response);
-  //$('form').trigger('reset');
-  store.user = response.user;
+const handleResponseSuccess = function (response) {
+  store.game = response.game;
 };
 
-const onGetGamesFailure = function () {
-  $('#auth-result').html('<p>not working for some reason</p>');
-};
+// const onGetGamesSuccess = function (response) {
+//   $('#auth-result').html('<p>It did work</p>');
+//   //console.log(response);
+//   //$('form').trigger('reset');
+//   store.user = response.user;
+// };
 
-const onShowGamesSuccess = function (response) {
-  $('#auth-result').html('<p>Showing Game Now</p>');
-  console.log(response);
-  //$('form').trigger('reset');
-};
+// const onGetGamesFailure = function () {
+//   $('#auth-result').html('<p>not working for some reason</p>');
+// };
 
-const onShowGamesFailure = function () {
-  $('#auth-result').html('<p>not gonna show a game</p>');
-};
+// const onShowGamesSuccess = function (response) {
+//   $('#auth-result').html('<p>Showing Game Now</p>');
+//   //console.log(response);
+//   //$('form').trigger('reset');
+// };
+
+// const onShowGamesFailure = function () {
+//   $('#auth-result').html('<p>not gonna show a game</p>');
+// };
 
 const onNewGamesSuccess = function (response) {
   $('#auth-result').html('<p>New Game Now</p>');
@@ -32,16 +37,23 @@ const onNewGamesFailure = function () {
   $('#auth-result').html('<p>not gonna play a new game</p>');
 };
 
-const handleResponseSuccess = function (response) {
-  store.game = response.game;
+const onUpdateGamesSuccess = function (response) {
+  //console.log('store', store);
+
+  $('#auth-result').html('<p>Game updated</p>');
+  //$('${#id + [indexValue]}').html(app.currentPlayer);
+  handleResponseSuccess(response);
+  //console.log('response', response);
+};
+
+const onUpdateGamesFailure = function () {
+  $('#auth-result').html('<p>error updating game</p>');
 };
 
 module.exports = {
-  onGetGamesSuccess,
-  onGetGamesFailure,
-  onShowGamesSuccess,
-  onShowGamesFailure,
   onNewGamesSuccess,
   onNewGamesFailure,
   handleResponseSuccess,
+  onUpdateGamesSuccess,
+  onUpdateGamesFailure,
 };

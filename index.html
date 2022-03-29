@@ -23,8 +23,48 @@
   </head>
   <body>
     <div class="container">
-      <h1>Tic-Tac-Toe</h1>
+      <header>
+        <img
+          src="./images/TicTacToeBugTitleNB.png"
+          width="1100px"
+          alt="tic tac
+        toe"
+        />
+      </header>
+
       <h2>Come get some!</h2>
+
+      <!-- <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Check me out</label
+          >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form> -->
 
       <h3>Sign Up</h3>
       <form id="sign-up-form">
@@ -59,24 +99,29 @@
 
       <div class="container-board">
         <div class="row">
-          <div class="col-2 box alt-color" id="0" data-index="12">a</div>
-          <div class="col-2 box alt-color" id="1" data-index="1">1</div>
-          <div class="col-2 box alt-color" id="2" data-index="2">2</div>
+          <div class="col-2 box" id="0" data-index="0"></div>
+          <div class="col-2 box" id="1" data-index="1"></div>
+          <div class="col-2 box" id="2" data-index="2"></div>
         </div>
         <div class="row">
-          <div class="col-2 box alt-color" id="3" data-index="3">3</div>
-          <div class="col-2 box alt-color" id="4" data-index="4">4</div>
-          <div class="col-2 box alt-color" id="5" data-index="5">5</div>
+          <div class="col-2 box" id="3" data-index="3"></div>
+          <div class="col-2 box" id="4" data-index="4"></div>
+          <div class="col-2 box" id="5" data-index="5"></div>
         </div>
         <div class="row">
-          <div class="col-2 box alt-color" id="6" data-index="6">6</div>
-          <div class="col-2 box alt-color" id="7" data-index="7">7</div>
-          <div class="col-2 box alt-color" id="8" data-index="8">8</div>
+          <div class="col-2 box" id="6" data-index="6"></div>
+          <div class="col-2 box" id="7" data-index="7"></div>
+          <div class="col-2 box" id="8" data-index="8"></div>
         </div>
       </div>
-      <div>Winner goes here</div>
-      <button id="get-games">Test Get Games</button>
-      <button id="show-game">Test Show Single Game</button>
+      <!-- <div
+        id="winner-declared"></div>
+        <img
+        src="https://i.imgur.com/4rhFHxx.png"
+      ></div> -->
+
+      <div id="error-status">No error placing symbol</div>
+
       <button id="new-game">New Game</button>
     </div>
   </body>
