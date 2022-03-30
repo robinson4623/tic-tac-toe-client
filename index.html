@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Example</title>
+    <title>Tic Tac Toe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Do not add `link` tags-->
@@ -22,19 +22,33 @@
     ></script>
   </head>
   <body>
-    <div class="container">
-      <header>
+    <header>
+      <h1>
         <img
           src="./images/TicTacToeBugTitleNB.png"
           width="1100px"
           alt="tic tac
         toe"
         />
-      </header>
+      </h1>
+    </header>
 
-      <h2>Adventure awaits!</h2>
-      <button id="new-game">New Game</button>
+    <header>
+      <h2 id="winner-header">
+        <img
+          src="./images/YouWinXBugNoBackground.png"
+          width="400px"
+          alt="tic tac
+        toe"
+        />
+      </h2>
+    </header>
 
+    <div class="container">
+      <div class="row">
+        <h2>Adventure awaits!</h2>
+        <button id="new-game" type="click">New Game</button>
+      </div>
       <h3 id="sign-up-head">Sign Up</h3>
       <form id="sign-up-form">
         <input name="credentials[email]" type="email" placeholder="Email" />
@@ -49,7 +63,6 @@
           placeholder="Enter password again"
         />
         <button type="submit">Sign Up</button>
-        <p id="auth-result">Update this text</p>
       </form>
 
       <h3 id="sign-in-head">Sign In</h3>
@@ -64,8 +77,11 @@
       </form>
 
       <button id="sign-out-button" type="click">Sign Out</button>
-      <div id="error-status">No error placing symbol</div>
+      <button id="restart-button" type="click">Restart Game</button>
 
+      <div id="error-status"></div>
+    </div>
+    <div>
       <div class="container-board">
         <div class="row">
           <div class="col-2 box" id="0" data-index="0"></div>
@@ -83,11 +99,6 @@
           <div class="col-2 box" id="8" data-index="8"></div>
         </div>
       </div>
-      <!-- <div
-        id="winner-declared"></div>
-        <img
-        src="https://i.imgur.com/4rhFHxx.png"
-      ></div> -->
     </div>
   </body>
 </html>

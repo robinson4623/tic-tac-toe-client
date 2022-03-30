@@ -3,19 +3,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Mulish:wght@300&family=Shalimar&display=swap');
 
 $font-family: 'Mountains of Christmas', cursive;
-$body-bg-color: rgb(187, 228, 130);
+$body-bg-color: powderBlue;
 $box-bg-color: white;
 $box-border-color: rgb(153, 72, 72);
 
-body .container-board {
+body,
+.container-board {
   background-color: $body-bg-color;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-header {
-  display: flex;
+
+header,
+h1 {
+  display: inline;
   align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -47,10 +51,45 @@ h3 {
   width: 125px;
 }
 
+#winner-image {
+  height: 100px;
+  width: 175px;
+  justify-content: center;
+}
+
+button {
+  background-color: rgb(197, 13, 14);
+  color: white;
+  margin: 4px 2px;
+  padding: 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: $font-family;
+}
+
+input {
+  border-radius: 8px;
+  padding: 2px;
+  margin: 4px 2px;
+}
+
 .container-board .box {
   display: none;
 }
 
 #new-game {
+  display: none;
+  width: 100px;
+}
+
+#winner-header {
+  display: none;
+}
+
+#sign-out-button {
+  display: none;
+}
+
+#restart-button {
   display: none;
 }

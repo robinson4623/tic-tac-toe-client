@@ -19,9 +19,10 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault();
-  console.log('Sign in event');
+  //console.log('Sign in event');
   const form = event.target;
   const data = getFormFields(form);
+
   authApi
     .signIn(data)
     .then(response => authUi.onSignInSuccess(response))
@@ -30,7 +31,8 @@ const onSignIn = function (event) {
 
 const onSignOut = function () {
   console.log('Sign out event');
-
+  //$('#0').html(<img src=""></img>);
+  //`<img src="${store.currentPlayerImage}" height="120px" width="120px">`;
   authApi
     .signOut()
     .then(response => authUi.onSignOutSuccess(response))

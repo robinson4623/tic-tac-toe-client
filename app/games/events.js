@@ -6,12 +6,25 @@ const getFormFields = require('../../lib/get-form-fields.js');
 const store = require('../store.js');
 const app = require('../app.js');
 
+// const player1Array = {
+//   symbol: 'X',
+//   image: '../../images/XBugs.png',
+//   winImage: '../../images/XBugs.png',
+// };
+
+// const player2Array = {
+//   symbol: 'O',
+//   image: '../../images/OBugs.png',
+//   winImage: '../../images/OBugs.png',
+// };
+
 const player1 = 'X';
 const player2 = 'O';
 const player1Image = '../../images/XBugs.png';
 const player2Image = '../../images/OBugs.png';
 
-const playerWinImage = '../../images/YouWinBugNoBackground.png';
+const player1WinImage = '../../images/YouWinXBugNoBackground.png';
+const player2WinImage = '../../images/YouWinOBugNoBackground.png';
 let currentGameArray = ['', '', '', '', '', '', '', ''];
 
 const board = currentGameArray;
@@ -21,13 +34,26 @@ store.currentPlayer = currentPlayer;
 
 let currentPlayerImage = player1Image;
 store.currentPlayerImage = currentPlayerImage;
+
+let currentPlayerWinImage = player1WinImage;
+store.currentPlayerWinImage = currentPlayerWinImage;
+
 let winner;
 
-const setTie = function () {};
+//const setTie = function () {};
 
 let winStatus = false;
 const winConditionMet = function () {
-  winner = currentPlayer;
+  if (winStatus) {
+    console.log('you are in winconditionmet');
+    winner = currentPlayer;
+    $('#winner-header').css('display', 'inherit');
+    $('#winner-header').html(
+      `<img src="${store.currentPlayerWinImage}" width="400px">`
+    );
+    currentGameArray = ['', '', '', '', '', '', '', ''];
+    winStatus = false;
+  }
 };
 
 const setWinStatus = function () {
@@ -102,7 +128,7 @@ const setWinStatus = function () {
   }
 };
 
-const togglePlayerImage = function () {
+const togglePlayerImage = () => {
   if (currentPlayerImage === player1Image) {
     currentPlayerImage = player2Image;
   } else currentPlayerImage = player1Image;
@@ -116,7 +142,18 @@ const togglePlayer = () => {
   store.currentPlayer = currentPlayer;
 };
 
+const togglePlayerWinImage = () => {
+  if (currentPlayerWinImage === player1WinImage) {
+    currentPlayerWinImage = player2WinImage;
+  } else currentPlayerWinImage = player1WinImage;
+  store.currentPlayerWinImage = currentPlayerWinImage;
+};
+
 const onNewGames = event => {
+  currentPlayer = player1;
+  currentPlayerImage = player1Image;
+  currentPlayerWinImage = player1WinImage;
+  console.log(currentPlayer, currentPlayerImage);
   gamesApi
     .newGames()
     .then(response => gamesUi.onNewGamesSuccess(response))
@@ -125,13 +162,13 @@ const onNewGames = event => {
 // function to update box and player image
 const onUpdateGames = event => {
   let boxClicked = $(event.target).data('index');
+
   if (winStatus === true) {
-    $('#error-status').html(
-      '<p>Winner has already been determined.  Click NEW GAME to start a new game.</p>'
-    );
+    $('#error-status').html('<p>Click RESTART to start a new game.</p>');
   } else if (boxClicked === undefined) {
     boxClicked = $(event.target.parentElement).data('index');
     store.boxClicked = boxClicked;
+    console.log(store);
   } else if (
     store.game.cells[boxClicked]?.includes('X') ||
     store.game.cells[boxClicked]?.includes('O')
@@ -145,6 +182,8 @@ const onUpdateGames = event => {
     currentGameArray[boxClicked] = currentPlayer;
 
     setWinStatus();
+
+    // winConditionMet();
 
     const updateBoard = {
       game: {
@@ -163,8 +202,10 @@ const onUpdateGames = event => {
 
       .catch(() => gamesUi.onNewGamesFailure());
 
+    winConditionMet();
     togglePlayer();
     togglePlayerImage();
+    togglePlayerWinImage();
   }
 };
 
