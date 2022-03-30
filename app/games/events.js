@@ -20,11 +20,11 @@ const app = require('../app.js');
 
 const player1 = 'X';
 const player2 = 'O';
-const player1Image = '../../images/XBugs.png';
-const player2Image = '../../images/OBugs.png';
+const player1Image = 'public/XBugs.png';
+const player2Image = 'public/OBugs.png';
 
-const player1WinImage = '../../images/YouWinXBugNoBackground.png';
-const player2WinImage = '../../images/YouWinOBugNoBackground.png';
+const player1WinImage = 'public/YouWinXBugNoBackground.png';
+const player2WinImage = 'public/YouWinOBugNoBackground.png';
 let currentGameArray = ['', '', '', '', '', '', '', ''];
 
 const board = currentGameArray;
