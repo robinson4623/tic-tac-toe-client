@@ -55,7 +55,6 @@ const winConditionMet = function () {
       `<img src="${store.currentPlayerWinImage}" width="400px">`
     );
     currentGameArray = ['', '', '', '', '', '', '', ''];
-    winStatus = false;
   } else if (isTie === true) {
     console.log('tie');
     $('#winner-header').css('display', 'inherit');
@@ -160,6 +159,7 @@ const onNewGames = () => {
   $('.container-board .box').css('display', 'none');
   $('.container-board .box').html('');
   $('#winner-header').html('');
+  $('#error-status').html('');
   // set all game data to 'none' on new game
   store.response = null;
   store.game = null;
