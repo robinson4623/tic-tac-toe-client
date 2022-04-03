@@ -57,9 +57,12 @@ const onSignOutSuccess = function () {
   // gameEvents.currentPlayer = gameEvents.player1;
   // gameEvents.currentPlayerImage = gameEvents.player1Image;
   // gameEvents.currentPlayerWinImage = gameEvents.player1WinImage;
-
+  //console.log(store)
   store.user = null;
   store.response = null;
+  store.game = null
+  gameEvents.isTrue = false
+  console.log(store)
 
   //store.current
   //store.game.cells = ['', '', '', '', '', '', '', '', ''];

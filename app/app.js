@@ -52,9 +52,8 @@ $(() => {
 
     //console.log(store);
   });
-  $('#get-games').on('click', gamesEvents.onGetGames);
-  $('#show-game').on('click', gamesEvents.onShowGames);
-  $('#new-game').on('click', function () {
+
+   $('#new-game').on('click', function () {
     // console.log('new game clicked');
     gamesEvents.onNewGames();
     $('.container-board .box').css('display', 'flex');

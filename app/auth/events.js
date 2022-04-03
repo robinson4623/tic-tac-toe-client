@@ -3,7 +3,6 @@
 const authApi = require('./api.js');
 const authUi = require('./ui.js');
 const getFormFields = require('../../lib/get-form-fields.js');
-const movieApi = require;
 
 const onSignUp = function (event) {
   event.preventDefault();
@@ -39,18 +38,8 @@ const onSignOut = function () {
     .catch(() => authUi.onSignInFailure());
 };
 
-const onGetGames = function () {
-  console.log('Getting Games');
-
-  authApi
-    .getGames()
-    .then(response => authUi.onGetGamesSuccess(response))
-    .catch(() => authUi.onGetGamesFailure());
-};
-
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
-  onGetGames,
 };

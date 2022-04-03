@@ -9,23 +9,24 @@ const app = require('../app.js');
 // const player1Array = {
 //   symbol: 'X',
 //   image: '../../images/XBugs.png',
-//   winImage: '../../images/XBugs.png',
+//   winImage: 'public/YouWinXBugNoBackground.png',
 // };
 
 // const player2Array = {
 //   symbol: 'O',
 //   image: '../../images/OBugs.png',
-//   winImage: '../../images/OBugs.png',
+//   winImage: 'public/YouWinOBugNoBackground.png',
 // };
 
 const player1 = 'X';
 const player2 = 'O';
 const player1Image = 'public/XBugs.png';
 const player2Image = 'public/OBugs.png';
+const playerTieImage = 'public/BugsTie.png';
 
 const player1WinImage = 'public/YouWinXBugNoBackground.png';
 const player2WinImage = 'public/YouWinOBugNoBackground.png';
-let currentGameArray = ['', '', '', '', '', '', '', ''];
+let currentGameArray = ['', '', '', '', '', '', '', '', ''];
 
 const board = currentGameArray;
 
@@ -40,6 +41,8 @@ store.currentPlayerWinImage = currentPlayerWinImage;
 
 let winner;
 
+let isTie = false;
+
 //const setTie = function () {};
 
 let winStatus = false;
@@ -53,6 +56,10 @@ const winConditionMet = function () {
     );
     currentGameArray = ['', '', '', '', '', '', '', ''];
     winStatus = false;
+  } else if (isTie === true) {
+    console.log('tie');
+    $('#winner-header').css('display', 'inherit');
+    $('#winner-header').html(`<img src="${playerTieImage}" width="600px">`);
   }
 };
 
@@ -114,20 +121,19 @@ const setWinStatus = function () {
     console.log('246 is the winner');
     winStatus = true;
   } else if (
-    board[0] !== '' &&
-    board[1] !== '' &&
-    board[2] !== '' &&
-    board[3] !== '' &&
-    board[4] !== '' &&
-    board[5] !== '' &&
-    board[6] !== '' &&
-    board[7] !== '' &&
-    board[8] !== ''
+    currentGameArray[0] !== '' &&
+    currentGameArray[1] !== '' &&
+    currentGameArray[2] !== '' &&
+    currentGameArray[3] !== '' &&
+    currentGameArray[4] !== '' &&
+    currentGameArray[5] !== '' &&
+    currentGameArray[6] !== '' &&
+    currentGameArray[7] !== '' &&
+    currentGameArray[8] !== ''
   ) {
-    console.log('tie it up');
+    isTie = true;
   }
 };
-
 const togglePlayerImage = () => {
   if (currentPlayerImage === player1Image) {
     currentPlayerImage = player2Image;
@@ -149,11 +155,24 @@ const togglePlayerWinImage = () => {
   store.currentPlayerWinImage = currentPlayerWinImage;
 };
 
-const onNewGames = event => {
+const onNewGames = () => {
+  // set player board and images to 'none' on new game
+  $('.container-board .box').css('display', 'none');
+  $('.container-board .box').html('');
+  $('#winner-header').html('');
+  // set all game data to 'none' on new game
+  store.response = null;
+  store.game = null;
   currentPlayer = player1;
   currentPlayerImage = player1Image;
   currentPlayerWinImage = player1WinImage;
-  console.log(currentPlayer, currentPlayerImage);
+  store.currentPlayerImage = player1Image;
+  currentGameArray = ['', '', '', '', '', '', '', '', ''];
+  winStatus = false;
+  isTie = false;
+  //console.log(store);
+  //console.log(currentPlayer, currentPlayerImage);
+  // call API to start a new game
   gamesApi
     .newGames()
     .then(response => gamesUi.onNewGamesSuccess(response))
@@ -162,13 +181,17 @@ const onNewGames = event => {
 // function to update box and player image
 const onUpdateGames = event => {
   let boxClicked = $(event.target).data('index');
+  $('#error-status').html('');
 
-  if (winStatus === true) {
-    $('#error-status').html('<p>Click RESTART to start a new game.</p>');
+  if (boxClicked === 'X' || boxClicked === 'O') {
+    console.log('Not today bee');
+  } else if (winStatus === true) {
+    $('#error-status').html('<p>Click NEW GAME to start a new game.</p>');
   } else if (boxClicked === undefined) {
     boxClicked = $(event.target.parentElement).data('index');
     store.boxClicked = boxClicked;
-    console.log(store);
+    $('#error-status').html('<p>Choose a different square silly.</p>');
+    console.log('undefined path');
   } else if (
     store.game.cells[boxClicked]?.includes('X') ||
     store.game.cells[boxClicked]?.includes('O')
@@ -180,7 +203,7 @@ const onUpdateGames = event => {
     );
 
     currentGameArray[boxClicked] = currentPlayer;
-
+    console.log(currentGameArray);
     setWinStatus();
 
     // winConditionMet();
