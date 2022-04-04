@@ -22,7 +22,7 @@ const player1 = 'X';
 const player2 = 'O';
 const player1Image = 'public/XBugs.png';
 const player2Image = 'public/OBugs.png';
-const playerTieImage = 'public/BugsTie.png';
+const playerTieImage = 'public/tieImageNoBackground.png';
 
 const player1WinImage = 'public/YouWinXBugNoBackground.png';
 const player2WinImage = 'public/YouWinOBugNoBackground.png';
@@ -45,10 +45,11 @@ let isTie = false;
 
 //const setTie = function () {};
 
+// if win condition is met change winner-header display to 'on' and populate appropriate winner image, then set
 let winStatus = false;
 const winConditionMet = function () {
   if (winStatus) {
-    console.log('you are in winconditionmet');
+    //console.log('you are in winconditionmet');
     winner = currentPlayer;
     $('#winner-header').css('display', 'inherit');
     $('#winner-header').html(
@@ -58,10 +59,11 @@ const winConditionMet = function () {
   } else if (isTie === true) {
     console.log('tie');
     $('#winner-header').css('display', 'inherit');
-    $('#winner-header').html(`<img src="${playerTieImage}" width="600px">`);
+    $('#winner-header').html(`<img src="${playerTieImage}" width="400px">`);
   }
 };
 
+// win conditions based on index of squares, top left to right, 0-8.
 const setWinStatus = function () {
   if (
     currentGameArray[0] == currentPlayer &&
@@ -120,6 +122,7 @@ const setWinStatus = function () {
     console.log('246 is the winner');
     winStatus = true;
   } else if (
+    // checking for tie if all squares are not empty but no win condition is met
     currentGameArray[0] !== '' &&
     currentGameArray[1] !== '' &&
     currentGameArray[2] !== '' &&
@@ -133,6 +136,7 @@ const setWinStatus = function () {
     isTie = true;
   }
 };
+
 const togglePlayerImage = () => {
   if (currentPlayerImage === player1Image) {
     currentPlayerImage = player2Image;
@@ -170,8 +174,7 @@ const onNewGames = () => {
   currentGameArray = ['', '', '', '', '', '', '', '', ''];
   winStatus = false;
   isTie = false;
-  //console.log(store);
-  //console.log(currentPlayer, currentPlayerImage);
+
   // call API to start a new game
   gamesApi
     .newGames()
@@ -184,7 +187,6 @@ const onUpdateGames = event => {
   $('#error-status').html('');
 
   if (boxClicked === 'X' || boxClicked === 'O') {
-    console.log('Not today bee');
   } else if (winStatus === true) {
     $('#error-status').html('<p>Click NEW GAME to start a new game.</p>');
   } else if (boxClicked === undefined) {
@@ -206,7 +208,7 @@ const onUpdateGames = event => {
     console.log(currentGameArray);
     setWinStatus();
 
-    // winConditionMet();
+    // update board with index of square clicked
 
     const updateBoard = {
       game: {
@@ -217,7 +219,7 @@ const onUpdateGames = event => {
         over: winStatus,
       },
     };
-
+    // update game API with new player marker places
     gamesApi
       .updateGame(updateBoard)
 
